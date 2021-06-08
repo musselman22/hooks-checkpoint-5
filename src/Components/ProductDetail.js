@@ -14,12 +14,8 @@ function ProductDetails() {
       if (productId !== '') {
         try {
           const data = await fetch(`http://18.224.200.47/products/${productId}/styles`)
-          console.log(data.status)
           if (data.status === 200) {
             const response = await data.json()
-            console.log("response", response)
-            console.log("image url", response.results[0].photos[0].url)
-            console.log(response.statusCode)
             if (response.results[0].photos[0].url === null) {
               setImage(false)
             } else {
@@ -36,7 +32,6 @@ function ProductDetails() {
       } else {
         setProductDetails('')
       }
-
     }
     getProductDetails()
   }, [productId])
